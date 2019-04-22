@@ -15,7 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="crass.cpp">
+    <Flex Include="..\..\..\src\scanner.l">
+      <Filter>Source Files</Filter>
+    </Flex>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\scanner.flex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

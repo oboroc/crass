@@ -1,9 +1,24 @@
-// crass.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// crass.cpp: This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include <iostream>
+#include <stdio.h>
+#include <assert.h>
 
-int main()
+extern FILE* yyin, * yyout;
+int __cdecl yylex(void);
+
+int main(int argc, char** argv)
 {
-	std::cout << "crass\n"; 
+	errno_t err;
+
+	++argv, --argc;	/* skip over program name */
+	if (argc > 0)
+	{
+		err = fopen_s(&yyin, argv[0], "r");
+		assert(err == 0);
+	}
+	else
+		yyin = stdin;
+
+	yylex();
 }
