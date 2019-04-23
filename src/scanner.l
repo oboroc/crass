@@ -1,4 +1,8 @@
-/* scanner for a toy Pascal-like language */
+/*
+wip scanner
+http://people.cs.aau.dk/~marius/sw/flex/Flex-Regular-Expressions.html - useful
+ */
+
 
 %{
 /* need this for the call to atof() below */
@@ -6,10 +10,10 @@
 #include <assert.h>
 %}
 
-%option noyywrap
+%option noyywrap caseless
 
 DIGIT	[0-9]
-ID		[a-z][a-z0-9]*
+ID		[a-z_][a-z0-9_]*
 
 %%
 
@@ -18,7 +22,7 @@ ID		[a-z][a-z0-9]*
 					atoi(yytext));
 			}
 
-{DIGIT}+"."{DIGIT}*	{
+{DIGIT}*"."{DIGIT}+	{
 				printf("A float: %s (%g)\n", yytext,
 					atof(yytext));
 			}
