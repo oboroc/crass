@@ -10,7 +10,7 @@ http://people.cs.aau.dk/~marius/sw/flex/Flex-Regular-Expressions.html - useful
 #include <assert.h>
 %}
 
-%option noyywrap caseless
+%option caseless
 
 DIGIT	[0-9]
 ID		[a-z_][a-z0-9_]*

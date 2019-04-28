@@ -4,8 +4,16 @@
 #include <stdio.h>
 #include <assert.h>
 
-extern FILE* yyin, * yyout;
-int __cdecl yylex(void);
+extern "C"
+{
+	extern FILE* yyin, * yyout;
+	int yylex(void);
+
+	int yywrap(void)
+	{
+		return 1;
+	}
+}
 
 int main(int argc, char** argv)
 {

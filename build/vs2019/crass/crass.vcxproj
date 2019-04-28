@@ -19,11 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <Flex Include="..\..\..\src\scanner.l" />
+    <Flex Include="..\..\..\src\scanner.l">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename).flex.c</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).flex.c</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).flex.c</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).flex.c</OutputFile>
+    </Flex>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\crass.cpp" />
-    <ClCompile Include="..\..\..\src\scanner.flex.cpp" />
+    <ClCompile Include="..\..\..\src\scanner.flex.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

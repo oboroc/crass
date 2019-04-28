@@ -20,10 +20,10 @@
     </Flex>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\scanner.flex.cpp">
+    <ClCompile Include="..\..\..\src\crass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\crass.cpp">
+    <ClCompile Include="..\..\..\src\scanner.flex.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
