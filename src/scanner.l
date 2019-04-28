@@ -3,6 +3,11 @@ wip scanner
 http://people.cs.aau.dk/~marius/sw/flex/Flex-Regular-Expressions.html - useful
  */
 
+%top {
+/* This code goes at the "top" of the generated file. */
+#include <stdint.h>
+#include <inttypes.h>
+}
 
 %{
 /* need this for the call to atof() below */
