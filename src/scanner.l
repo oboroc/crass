@@ -7,12 +7,11 @@ http://people.cs.aau.dk/~marius/sw/flex/Flex-Regular-Expressions.html - useful
 /* This code goes at the "top" of the generated file. */
 #include <stdint.h>
 #include <inttypes.h>
+#include <math.h>
+#include <assert.h>
 }
 
 %{
-/* need this for the call to atof() below */
-#include <math.h>
-#include <assert.h>
 %}
 
 %option caseless

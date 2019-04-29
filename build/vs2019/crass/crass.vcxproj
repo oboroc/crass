@@ -27,7 +27,7 @@
     </Flex>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\crass.cpp" />
+    <ClCompile Include="..\..\..\src\crass.c" />
     <ClCompile Include="..\..\..\src\scanner.flex.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

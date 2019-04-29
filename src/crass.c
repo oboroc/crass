@@ -4,15 +4,12 @@
 #include <stdio.h>
 #include <assert.h>
 
-extern "C"
-{
-	extern FILE* yyin, * yyout;
-	int yylex(void);
+extern FILE* yyin, * yyout;
+extern int yylex(void);
 
-	int yywrap(void)
-	{
-		return 1;
-	}
+int yywrap(void)
+{
+	return 1;
 }
 
 int main(int argc, char** argv)
