@@ -1,5 +1,6 @@
-// crass.cpp: This file contains the 'main' function. Program execution begins and ends there.
-//
+/*
+ * crass - a crude assembler!
+ */
 
 #include <stdio.h>
 #include <assert.h>
