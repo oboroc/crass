@@ -11,6 +11,10 @@ wip scanner
 }
 
 %{
+extern int lexer_input(char *, int *, int);
+
+#undef YY_INPUT
+#define YY_INPUT(buf, result, max_size) lexer_input(buf, &result, max_size)
 %}
 
 %option caseless
@@ -29,7 +33,6 @@ ID		[a-z_][a-z0-9_]*
 	printf("A float: %s (%g)\n", yytext, atof(yytext));
 }
 
-/* this isn't working for some reasons */
 [0-9][0-9a-f]*h {
 	
 	printf("A hexadecimal: %s (%x)", yytext, strtol(yytext, NULL, 16));
