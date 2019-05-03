@@ -15,6 +15,11 @@ http://people.cs.aau.dk/~marius/sw/flex/Flex-Regular-Expressions.html - useful
 %}
 
 %option caseless
+%x CCMT
+
+"/*"		BEGIN(CCMT);
+<CCMT>"*/"	BEGIN(INITIAL);
+<CCMT>.	;
 
 DIGIT	[0-9]
 ID		[a-z_][a-z0-9_]*
