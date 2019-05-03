@@ -15,32 +15,26 @@ http://people.cs.aau.dk/~marius/sw/flex/Flex-Regular-Expressions.html - useful
 %}
 
 %option caseless
-%x CCMT
-
-"/*"		BEGIN(CCMT);
-<CCMT>"*/"	BEGIN(INITIAL);
-<CCMT>.	;
+%x C_COMMENT
 
 DIGIT	[0-9]
 ID		[a-z_][a-z0-9_]*
 
 %%
 
-{DIGIT}+	{
-				printf("An integer: %s (%d)\n", yytext,
-					atoi(yytext));
-			}
+{DIGIT}+ {
+	printf("An integer: %s (%d)\n", yytext, atoi(yytext));
+}
 
-{DIGIT}*"."{DIGIT}+	{
-				printf("A float: %s (%g)\n", yytext,
-					atof(yytext));
-			}
+{DIGIT}*"."{DIGIT}+ {
+	printf("A float: %s (%g)\n", yytext, atof(yytext));
+}
 
-if|then|begin|end|procedure|function	{
-				printf("A keyword: %s\n", yytext);
-			}
+if|then|begin|end|procedure|function {
+	printf("A keyword: %s\n", yytext);
+}
 
-{ID}		printf("An identifier: %s\n", yytext);
+{ID}	printf("An identifier: %s\n", yytext);
 
 "+"|"-"|"*"|"/"	printf("An operator: %s\n", yytext);
 
@@ -48,6 +42,10 @@ if|then|begin|end|procedure|function	{
 
 [ \t\n]+	/* eat up whitespace */
 
-.			printf("Unrecognized character: %s\n", yytext);
+.	printf("Unrecognized character: %s\n", yytext);
+
+"/*"			BEGIN(C_COMMENT);
+<C_COMMENT>"*/"	BEGIN(INITIAL);
+<C_COMMENT>.	/* eat up comment content */
 
 %%
