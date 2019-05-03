@@ -24,6 +24,8 @@
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).flex.c</OutputFile>
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).flex.c</OutputFile>
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).flex.c</OutputFile>
+      <Debug Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</Debug>
+      <Debug Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</Debug>
     </Flex>
   </ItemGroup>
   <ItemGroup>
