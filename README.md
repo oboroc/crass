@@ -1,5 +1,4 @@
-crass - Crude Assembler
------------------------
+# crass - a crude assembler!
 
 Another attempt at a Z80 assembler.
 
