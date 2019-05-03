@@ -1,6 +1,5 @@
 /*
 wip scanner
-http://people.cs.aau.dk/~marius/sw/flex/Flex-Regular-Expressions.html - useful
  */
 
 %top {
@@ -47,5 +46,7 @@ if|then|begin|end|procedure|function {
 "/*"			BEGIN(C_COMMENT);
 <C_COMMENT>"*/"	BEGIN(INITIAL);
 <C_COMMENT>.	/* eat up comment content */
+
+";".*		/* MASM style comment: starts with ; and ends with new line */
 
 %%
