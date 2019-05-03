@@ -17,7 +17,9 @@ int main(int argc, char** argv)
 {
 	errno_t err;
 
-	++argv, --argc;	/* skip over program name */
+	/* skip over program name */
+	argv++;
+	argc--;
 	if (argc > 0)
 	{
 		err = fopen_s(&yyin, argv[0], "r");
