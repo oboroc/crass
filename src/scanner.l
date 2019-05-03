@@ -29,15 +29,19 @@ ID		[a-z_][a-z0-9_]*
 	printf("A float: %s (%g)\n", yytext, atof(yytext));
 }
 
-if|then|begin|end|procedure|function {
+/* this isn't working for some reasons */
+[0-9][0-9a-f]*h {
+	
+	printf("A hexadecimal: %s (%x)", yytext, strtol(yytext, NULL, 16));
+}
+
+equ|ifdef|else|endif {
 	printf("A keyword: %s\n", yytext);
 }
 
 {ID}	printf("An identifier: %s\n", yytext);
 
 "+"|"-"|"*"|"/"	printf("An operator: %s\n", yytext);
-
-"{"[^{}\n]*"}"	/* eat up one-line comments */
 
 [ \t\n]+	/* eat up whitespace */
 
