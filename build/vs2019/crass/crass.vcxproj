@@ -32,6 +32,9 @@
     <ClCompile Include="..\..\..\src\crass.c" />
     <ClCompile Include="..\..\..\src\scanner.flex.c" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\examples\test.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{0DB8EC3F-D261-48B6-8DAC-9A6BD5F6A92B}</ProjectGuid>

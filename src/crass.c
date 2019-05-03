@@ -9,22 +9,6 @@
 extern FILE* yyin, * yyout;
 extern int yylex(void);
 
-static size_t read_pos;
-static const char* input_buf = "123 abc";
-int lexer_input(char* buf, int* result, int max_size)
-{
-	size_t total_char = max_size;
-	size_t char_to_read = strlen(input_buf) - read_pos;
-	int i;
-	if (total_char > char_to_read)
-		total_char = char_to_read;
-	for (i = 0; i < total_char; i++)
-		buf[i] = input_buf[read_pos + i];
-	*result = total_char;
-	read_pos += total_char;
-	return 0;
-}
-
 int yywrap(void)
 {
 	return 1;
@@ -32,5 +16,19 @@ int yywrap(void)
 
 int main(int argc, char** argv)
 {
+	++argv, --argc;	/* skip over program name */
+	if (argc > 0)
+	{
+		errno_t err;
+		err = fopen_s(&yyin, argv[0], "r");
+		if (err != 0)
+		{
+			fprintf(stderr, "ERROR: can't open the file %s\n", argv[0]);
+			exit(1);
+		}
+	}
+	else
+		yyin = stdin;
+
 	yylex();
 }
