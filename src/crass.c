@@ -35,5 +35,6 @@ int main(int argc, char** argv)
 	scan_str("0abch 01234h 0ffffh");
 	scan_str("A B C");
 	scan_str("0.1 .2 1.0003");
+	scan_str("equ");
 	return 0;
 }

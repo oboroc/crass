@@ -356,7 +356,6 @@ void yyfree ( void * , yyscan_t yyscanner );
 
 #ifdef YY_HEADER_EXPORT_START_CONDITIONS
 #define INITIAL 0
-#define C_COMMENT 1
 
 #endif
 
@@ -516,9 +515,9 @@ extern int yylex (yyscan_t yyscanner);
 #undef YY_DECL
 #endif
 
-#line 57 "scanner.l"
+#line 52 "scanner.l"
 
 
-#line 522 "scanner.flex.h"
+#line 521 "scanner.flex.h"
 #undef yyIN_HEADER
 #endif /* yyHEADER_H */

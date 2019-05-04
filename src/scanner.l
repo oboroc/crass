@@ -14,7 +14,6 @@ wip scanner
 %}
 
 %option caseless reentrant
-%x C_COMMENT
 
 %%
 
@@ -47,10 +46,6 @@ equ|ifdef|else|endif {
 . {
 	printf("Unrecognized character: %s\n", yytext);
 }
-
-"/*"			BEGIN(C_COMMENT);
-<C_COMMENT>.	/* skip over comment */
-<C_COMMENT>"*/"	BEGIN(INITIAL);
 
 ";".*		/* MASM style comment: starts with ; and ends with new line */
 
