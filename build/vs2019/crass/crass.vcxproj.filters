@@ -28,8 +28,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\..\examples\test.txt">
-      <Filter>Source Files</Filter>
-    </Text>
+    <ClInclude Include="..\..\..\src\scanner.flex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
