@@ -13,7 +13,7 @@ wip scanner
 %{
 %}
 
-%option caseless
+%option caseless reentrant
 %x C_COMMENT
 
 %%

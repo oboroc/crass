@@ -26,6 +26,10 @@
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).flex.c</OutputFile>
       <Debug Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</Debug>
       <Debug Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</Debug>
+      <HeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename).flex.h</HeaderFile>
+      <HeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).flex.h</HeaderFile>
+      <HeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).flex.h</HeaderFile>
+      <HeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).flex.h</HeaderFile>
     </Flex>
   </ItemGroup>
   <ItemGroup>
@@ -33,7 +37,7 @@
     <ClCompile Include="..\..\..\src\scanner.flex.c" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\..\examples\test.txt" />
+    <ClInclude Include="..\..\..\src\scanner.flex.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

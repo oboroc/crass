@@ -6,29 +6,22 @@
 #include <assert.h>
 #include <string.h>
 
-extern FILE* yyin, * yyout;
-extern int yylex(void);
+#include "scanner.flex.h"
 
-int yywrap(void)
+int yywrap(yyscan_t yyscanner)
 {
 	return 1;
 }
 
 int main(int argc, char** argv)
 {
-	++argv, --argc;	/* skip over program name */
-	if (argc > 0)
-	{
-		errno_t err;
-		err = fopen_s(&yyin, argv[0], "r");
-		if (err != 0)
-		{
-			fprintf(stderr, "ERROR: can't open the file %s\n", argv[0]);
-			exit(1);
-		}
-	}
-	else
-		yyin = stdin;
-
-	yylex();
+	/* use reentrant scanner */
+	yyscan_t scanner;
+	YY_BUFFER_STATE buf;
+	yylex_init(&scanner);
+	buf = yy_scan_string("0abch 01234h 0ffffh", scanner);
+	yylex(scanner);
+	yy_delete_buffer(buf, scanner);
+	yylex_destroy(scanner);
+	return 0;
 }
