@@ -13,7 +13,7 @@ wip scanner
 %{
 %}
 
-%option caseless reentrant
+%option caseless reentrant yylineno
 
 %%
 
