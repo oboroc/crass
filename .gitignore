@@ -4,5 +4,5 @@ Debug/
 Release/
 
 # custom
-*.flex.cpp
 *.flex.c
+*.flex.h
