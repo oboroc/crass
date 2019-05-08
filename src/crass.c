@@ -32,7 +32,7 @@ void scan_file(FILE* f)
 {
 	/* use reentrant scanner */
 	yyscan_t scanner;
-	YY_BUFFER_STATE buf;
+	//YY_BUFFER_STATE buf;
 	yylex_init(&scanner);
 	yyset_in(f, scanner);
 	yylex(scanner);
@@ -41,12 +41,19 @@ void scan_file(FILE* f)
 
 int main(int argc, char** argv)
 {
-	UNUSED(argc);
-	UNUSED(argv);
-	scan_str("0abch 01234h 0ffffh");
-	scan_str("A B C");
-	scan_str("0.1 .2 1.0003");
-	scan_str("equ");
-	scan_file(stdin);
+//	scan_str("0abch A 1 0.1 equ");
+	for (int i = 1; i < argc; i++)
+	{
+		printf("Argument #%d = %s\n", i, argv[i]);
+		errno_t err;
+		FILE* f;
+		err = fopen_s(&f, argv[i], "r");
+		if (err != 0)
+		{
+			fprintf(stderr, "ERROR: can't open file %s\n", argv[i]);
+			exit(1);
+		}
+		scan_file(f);
+	}
 	return 0;
 }

@@ -15,7 +15,32 @@ wip scanner
 
 %option caseless reentrant yylineno
 
+%x incl
+
 %%
+
+include			BEGIN(incl);
+
+<incl>[ \t]*	/* eat the whitespace */
+
+<incl>[^ \t\n]+ {
+	/* got the include file name */
+	errno_t err;
+	err = fopen_s(&yyin, yytext, "r");
+	if (err != 0)
+	{
+		fprintf(stderr, "ERROR: can't open include file %s\n", yytext);
+		exit(1);
+	}
+	yypush_buffer_state(yy_create_buffer(yyin, YY_BUF_SIZE, yyscanner), yyscanner);
+	BEGIN(INITIAL);
+}
+
+<<EOF>> {
+	yypop_buffer_state(yyscanner);
+	if (!YY_CURRENT_BUFFER)
+		yyterminate();
+}
 
 [0-9]+ {
 	printf("An integer: %s (%d)\n", yytext, atoi(yytext));
