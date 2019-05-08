@@ -28,6 +28,17 @@ void scan_str(char *str)
 	yylex_destroy(scanner);
 }
 
+void scan_file(FILE* f)
+{
+	/* use reentrant scanner */
+	yyscan_t scanner;
+	YY_BUFFER_STATE buf;
+	yylex_init(&scanner);
+	yyset_in(f, scanner);
+	yylex(scanner);
+	yylex_destroy(scanner);
+}
+
 int main(int argc, char** argv)
 {
 	UNUSED(argc);
@@ -36,5 +47,6 @@ int main(int argc, char** argv)
 	scan_str("A B C");
 	scan_str("0.1 .2 1.0003");
 	scan_str("equ");
+	scan_file(stdin);
 	return 0;
 }
