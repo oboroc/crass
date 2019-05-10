@@ -32,7 +32,6 @@ void scan_file(FILE* f)
 {
 	/* use reentrant scanner */
 	yyscan_t scanner;
-	//YY_BUFFER_STATE buf;
 	yylex_init(&scanner);
 	yyset_in(f, scanner);
 	yylex(scanner);
@@ -45,9 +44,8 @@ int main(int argc, char** argv)
 	for (int i = 1; i < argc; i++)
 	{
 		printf("Argument #%d = %s\n", i, argv[i]);
-		errno_t err;
 		FILE* f;
-		err = fopen_s(&f, argv[i], "r");
+		errno_t err = fopen_s(&f, argv[i], "r");
 		if (err != 0)
 		{
 			fprintf(stderr, "ERROR: can't open file %s\n", argv[i]);

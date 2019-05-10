@@ -25,8 +25,7 @@ include			BEGIN(incl);
 
 <incl>[^ \t\n]+ {
 	/* got the include file name */
-	errno_t err;
-	err = fopen_s(&yyin, yytext, "r");
+	errno_t err = fopen_s(&yyin, yytext, "r");
 	if (err != 0)
 	{
 		fprintf(stderr, "ERROR: can't open include file %s\n", yytext);
