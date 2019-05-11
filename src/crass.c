@@ -40,7 +40,7 @@ void scan_file(FILE* f)
 
 int main(int argc, char** argv)
 {
-//	scan_str("0abch A 1 0.1 equ");
+//	scan_str("0abch A 1 0.1 equ \"abc\" ahaha");
 	for (int i = 1; i < argc; i++)
 	{
 		printf("Argument #%d = %s\n", i, argv[i]);
