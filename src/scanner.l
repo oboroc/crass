@@ -16,7 +16,8 @@ wip scanner
 	char *string_buf_ptr;
 %}
 
-%option caseless reentrant yylineno
+%option caseless reentrant yylineno batch
+%option align 8bit fast read
 
 %x incl str
 
