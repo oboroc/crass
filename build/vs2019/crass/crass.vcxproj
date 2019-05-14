@@ -30,6 +30,10 @@
       <HeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).flex.h</HeaderFile>
       <HeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).flex.h</HeaderFile>
       <HeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).flex.h</HeaderFile>
+      <Wincompat Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</Wincompat>
+      <Wincompat Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</Wincompat>
+      <Wincompat Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</Wincompat>
+      <Wincompat Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</Wincompat>
     </Flex>
   </ItemGroup>
   <ItemGroup>
@@ -99,8 +103,10 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -110,8 +116,10 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -123,8 +131,10 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -138,8 +148,10 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
