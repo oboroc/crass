@@ -71,10 +71,6 @@ equ|ifdef|else|endif {
 
 [ \t\n]+	/* eat up whitespace */
 
-	/*. {
-	//	printf("Unrecognized character: %s\n", yytext);
-	}*/
-
 ";".*		/* MASM style comment: starts with ; and ends with new line */
 
 	/* next part is a C style string matcher as per https://westes.github.io/flex/manual/Start-Conditions.html */
@@ -155,6 +151,10 @@ equ|ifdef|else|endif {
 	char *yptr = yytext;
 	while (*yptr)
 		*string_buf_ptr++ = *yptr++;
+}
+
+. {
+	printf("Unrecognized character: %s\n", yytext);
 }
 
 %%
