@@ -5,3 +5,4 @@ Release/
 
 # custom
 *.flex.*
+lex.backup
