@@ -168,7 +168,7 @@ equ|ifdef|else|endif {
 
 <*>.|\n {
 	/* default action, should always be the last */
-	printf("Default rule fall-through: %s\n", yytext);
+	fprintf(stderr, "Default rule fall-through: %s\n", yytext);
 }
 
 %%
