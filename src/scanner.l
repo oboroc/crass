@@ -1,9 +1,12 @@
 /*
 wip scanner
+
+TODO: externalize rule code as per https://westes.github.io/flex/manual/Accessor-Methods.html
+TODO: evaluate flex based macro expansion: https://westes.github.io/flex/manual/How-can-I-expand-macros-in-the-input_003f.html
  */
 
 %top {
-/* This code goes at the "top" of the generated file. */
+/* This code goes at the top of the generated file */
 #include <stdint.h>
 #include <inttypes.h>
 #include <math.h>
@@ -11,17 +14,23 @@ wip scanner
 }
 
 %{
-	#define MAX_STR_CONST 1000
-	char string_buf[MAX_STR_CONST];
-	char *string_buf_ptr;
 %}
 
-%option caseless reentrant yylineno batch
-%option align 8bit fast read
+%option caseless reentrant yylineno
+%option batch align 8bit fast read
+%option warn backup
+%option nodefault
+%option outfile="scanner.flex.c" header-file="scanner.flex.h"
+%option prefix="crass"
 
 %x incl str
 
 %%
+
+	/* declaring here makes variables local to yylex() as opposing to declaring in %{ %} */
+	#define MAX_STR_CONST 1000
+	char string_buf[MAX_STR_CONST];
+	char *string_buf_ptr = string_buf;
 
 include			BEGIN(incl);
 
@@ -155,6 +164,11 @@ equ|ifdef|else|endif {
 
 . {
 	printf("Unrecognized character: %s\n", yytext);
+}
+
+<*>.|\n {
+	/* default action, should always be the last */
+	printf("Default rule fall-through: %s\n", yytext);
 }
 
 %%
