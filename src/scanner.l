@@ -66,7 +66,10 @@ include			BEGIN(incl);
 	printf("A hexadecimal: %s (%x)\n", yytext, strtol(yytext, NULL, 16));
 }
 
-equ|ifdef|else|endif {
+equ		|
+ifdef	|
+else	|
+endif {
 	printf("A keyword: %s\n", yytext);
 }
 
