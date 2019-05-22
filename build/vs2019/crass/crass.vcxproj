@@ -20,16 +20,24 @@
   </ItemGroup>
   <ItemGroup>
     <Flex Include="..\..\..\src\scanner.l">
-      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename).flex.c</OutputFile>
-      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).flex.c</OutputFile>
-      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).flex.c</OutputFile>
-      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).flex.c</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </OutputFile>
       <Debug Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</Debug>
       <Debug Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</Debug>
-      <HeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename).flex.h</HeaderFile>
-      <HeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).flex.h</HeaderFile>
-      <HeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).flex.h</HeaderFile>
-      <HeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).flex.h</HeaderFile>
+      <HeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </HeaderFile>
+      <HeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </HeaderFile>
+      <HeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </HeaderFile>
+      <HeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </HeaderFile>
       <Wincompat Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</Wincompat>
       <Wincompat Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</Wincompat>
       <Wincompat Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</Wincompat>
