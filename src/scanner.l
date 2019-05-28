@@ -3,6 +3,7 @@ wip scanner
 
 TODO: externalize rule code as per https://westes.github.io/flex/manual/Accessor-Methods.html
 TODO: evaluate flex based macro expansion: https://westes.github.io/flex/manual/How-can-I-expand-macros-in-the-input_003f.html
+TODO: use https://westes.github.io/flex/manual/Common-Patterns.html for basic patterns
  */
 
 %top {
