@@ -19,7 +19,7 @@ TODO: use https://westes.github.io/flex/manual/Common-Patterns.html for basic pa
 
 %option caseless reentrant yylineno
 %option batch align 8bit fast read
-%option warn backup
+%option warn backup verbose
 %option nodefault
 %option outfile="scanner.flex.c" header-file="scanner.flex.h"
 %option prefix="crass"
@@ -30,7 +30,7 @@ TODO: use https://westes.github.io/flex/manual/Common-Patterns.html for basic pa
 
 include			BEGIN(incl);
 
-<incl>[ \t]*	/* eat the whitespace */
+<incl>[ \t]*	/* eat the whitespace in include mode */
 
 <incl>[^ \t\n]+ {
 	/* got the include file name */
@@ -54,13 +54,30 @@ include			BEGIN(incl);
 	printf("An integer: %s (%d)\n", yytext, atoi(yytext));
 }
 
-	/*[0-9]*"."[0-9]+ {
-		printf("A float: %s (%g)\n", yytext, atof(yytext));
-	}*/
+	/* https://westes.github.io/flex/manual/Performance.html#index-error-rules_002c-to-eliminate-backing-up */
+[0-9][0-9a-f]*h {
+	printf("A hexadecimal: %s (%x)\n", yytext, strtol(yytext, NULL, 16));
+}
 
-	/*[0-9][0-9a-f]*h {
-		printf("A hexadecimal: %s (%x)\n", yytext, strtol(yytext, NULL, 16));
-	}*/
+	/* eliminate backing up for the hexadecimal rule above */
+[0-9][0-9a-f]* {
+	fprintf(stderr, "Invalid token: %s\n", yytext);
+}
+
+	/* rule for simple float */
+[0-9]+"."[0-9]+ {
+	printf("A float: %s (%g)\n", yytext, atof(yytext));
+}
+
+	/* eliminate backing up by capturing '1.' */
+[0-9]+"." {
+	fprintf(stderr, "Invalid token: %s\n", yytext);
+}
+
+	/* eliminate backing up by capturing '.1' */
+"."[0-9]+ {
+	fprintf(stderr, "Invalid token: %s\n", yytext);
+}
 
 "+"|"-"|"*"|"/" {
 	printf("An operator: %s\n", yytext);
@@ -83,7 +100,7 @@ endif {
 
 <*>.|\n {
 	/* default action, should always be the last */
-	fprintf(stderr, "Default rule fall-through: %s\n", yytext);
+	fprintf(stderr, "Default rule fall-through: %s - please create new rules to capture this input\n", yytext);
 }
 
 %%

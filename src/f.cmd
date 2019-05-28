@@ -1,1 +1,1 @@
-win_flex.exe -v --wincompat scanner.l
+win_flex.exe --wincompat scanner.l
