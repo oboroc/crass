@@ -1,5 +1,4 @@
 0F3DBh
 01234h
 0ab0dh
-"abc\ndef\n\t <- a tab"
 ahaha
