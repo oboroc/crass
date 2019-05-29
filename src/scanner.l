@@ -91,11 +91,93 @@ include			BEGIN(incl);
 	printf("An operator: %s\n", yytext);
 }
 
+	/* reserved words */
+end		|
 equ		|
-ifdef	|
-else	|
-endif {
+org {
 	printf("A keyword: %s\n", yytext);
+}
+
+	/* opcodes */
+ld		|	/* load */
+
+ex		|	/* exchange */
+exx		|
+
+push	|	/* stack */
+pop		|
+
+add		|	/* arithmetic */
+adc		|
+sub		|
+sbc		|
+cp		|
+inc		|
+dec		|
+
+jp		|	/* jumps and return */
+jr		|
+djnz	|
+call	|
+ret		|
+reti	|
+retn	|
+
+and		|	/* boolean logic */
+or		|
+xor		|
+
+set		|	/* bit set, reset and test */
+res		|
+bit		|
+
+rlca	|	/* rotate */
+rla		|
+rrca	|
+rra		|
+rlc		|
+rl		|
+rrc		|
+rr		|
+rld		|
+rrd		|
+
+sla		|	/* shift */
+sra		|
+srl		|
+
+nop		|	/* general */
+halt	|
+di		|
+ei		|
+im		|
+scf		|
+ccf		|
+neg		|
+cpl		|
+daa		|
+
+ldi		|	/* block transfer */
+ldd		|
+ldir	|
+lddr	|
+
+cpi		|	/* block search */
+cpd		|
+cpir	|
+cpdr	|
+
+otdr	|	/* io */
+otir	|
+outd	|
+outi	|
+out		|
+indr	|
+inir	|
+ind		|
+ini		|
+in {
+	printf("An opcode: %s\n", yytext);
 }
 
 [a-z_][a-z0-9_]* {
