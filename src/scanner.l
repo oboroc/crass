@@ -54,6 +54,11 @@ include			BEGIN(incl);
 	printf("An integer: %s (%d)\n", yytext, atoi(yytext));
 }
 
+	/* rule for binary numbers */
+[0-1]+b {
+	printf("A binary number: %s (%d)\n", yytext, strtol(yytext, NULL, 2));
+}
+
 	/* https://westes.github.io/flex/manual/Performance.html#index-error-rules_002c-to-eliminate-backing-up */
 [0-9][0-9a-f]*h {
 	printf("A hexadecimal: %s (%x)\n", yytext, strtol(yytext, NULL, 16));
@@ -79,7 +84,10 @@ include			BEGIN(incl);
 	fprintf(stderr, "Invalid token: %s\n", yytext);
 }
 
-"+"|"-"|"*"|"/" {
+"+"	|
+"-"	|
+"*"	|
+"/" {
 	printf("An operator: %s\n", yytext);
 }
 
@@ -100,7 +108,7 @@ endif {
 
 <*>.|\n {
 	/* default action, should always be the last */
-	fprintf(stderr, "Default rule fall-through: %s - please create new rules to capture this input\n", yytext);
+	fprintf(stderr, "Flex default rule fall-through: \"%s\" - please create new rules to capture this input\n", yytext);
 }
 
 %%
