@@ -10,7 +10,7 @@
 
 #define UNUSED(x) (void)(x)
 
-int yywrap(yyscan_t yyscanner)
+int crasswrap(yyscan_t yyscanner)
 {
 	UNUSED(yyscanner);
 	return 1;
@@ -21,21 +21,21 @@ void scan_str(char *str)
 	/* use reentrant scanner */
 	yyscan_t scanner;
 	YY_BUFFER_STATE buf;
-	yylex_init(&scanner);
-	buf = yy_scan_string(str, scanner);
-	yylex(scanner);
-	yy_delete_buffer(buf, scanner);
-	yylex_destroy(scanner);
+	crasslex_init(&scanner);
+	buf = crass_scan_string(str, scanner);
+	crasslex(scanner);
+	crass_delete_buffer(buf, scanner);
+	crasslex_destroy(scanner);
 }
 
 void scan_file(FILE* f)
 {
 	/* use reentrant scanner */
 	yyscan_t scanner;
-	yylex_init(&scanner);
-	yyset_in(f, scanner);
-	yylex(scanner);
-	yylex_destroy(scanner);
+	crasslex_init(&scanner);
+	crassset_in(f, scanner);
+	crasslex(scanner);
+	crasslex_destroy(scanner);
 }
 
 int main(int argc, char** argv)
