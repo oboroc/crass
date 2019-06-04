@@ -18,45 +18,9 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <Flex Include="..\..\..\src\scanner.l">
-      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </OutputFile>
-      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </OutputFile>
-      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </OutputFile>
-      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      </OutputFile>
-      <Debug Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</Debug>
-      <Debug Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</Debug>
-      <HeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </HeaderFile>
-      <HeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </HeaderFile>
-      <HeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </HeaderFile>
-      <HeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      </HeaderFile>
-      <Wincompat Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</Wincompat>
-      <Wincompat Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</Wincompat>
-      <Wincompat Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</Wincompat>
-      <Wincompat Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</Wincompat>
-    </Flex>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\src\crass.c" />
-    <ClCompile Include="..\..\..\src\scanner.flex.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\src\scanner.flex.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\..\..\examples\test.txt" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{0DB8EC3F-D261-48B6-8DAC-9A6BD5F6A92B}</ProjectGuid>
+    <ProjectGuid>{4331CA37-A44A-46B6-B940-554B23647A5F}</ProjectGuid>
     <RootNamespace>crass</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -89,7 +53,6 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-    <Import Project="..\win_flex_bison_custom_build.props" />
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
@@ -109,12 +72,10 @@
   <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <DisableSpecificWarnings>
-      </DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -122,12 +83,10 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <DisableSpecificWarnings>
-      </DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -135,14 +94,12 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <DisableSpecificWarnings>
-      </DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -152,14 +109,12 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <DisableSpecificWarnings>
-      </DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -167,8 +122,31 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\crass.c" />
+    <ClCompile Include="..\..\..\src\scanner.flex.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\src\scanner.l">
+      <FileType>Document</FileType>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Running win_flex on scanner.l</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">scanner.flex.c;scanner.flex.h</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Running win_flex on scanner.l</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">scanner.flex.c;scanner.flex.h</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Running win_flex on scanner.l</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">scanner.flex.c;scanner.flex.h</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Running win_flex on scanner.l</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">scanner.flex.c;scanner.flex.h</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">win_flex.exe --wincompat $(ProjectDir)..\..\..\src\scanner.l</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">win_flex.exe --wincompat $(ProjectDir)..\..\..\src\scanner.l</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">win_flex.exe --wincompat $(ProjectDir)..\..\..\src\scanner.l</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">win_flex.exe --wincompat $(ProjectDir)..\..\..\src\scanner.l</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\scanner.flex.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\win_flex_bison_custom_build.targets" />
   </ImportGroup>
 </Project>
