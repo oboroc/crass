@@ -24,7 +24,7 @@ TODO: use https://westes.github.io/flex/manual/Common-Patterns.html for basic pa
 %option outfile="scanner.flex.c" header-file="scanner.flex.h"
 %option prefix="crass"
 
-%x incl
+%x incl str
 
 %%
 
@@ -49,6 +49,28 @@ include			BEGIN(incl);
 	if (!YY_CURRENT_BUFFER)
 		yyterminate();
 }
+
+	/* https://westes.github.io/flex/manual/Start-Conditions.html#Start-Conditions */
+\"				BEGIN(str);
+
+	/*<str>.*\" {
+		BEGIN(INITIAL);
+		printf("A simple string: %s\n", yytext);
+	}/
+
+	/*<str> {
+		\n			yyerror("the string misses \" to termiate before newline");
+		<<EOF>>		yyerror("the string misses \" to terminate before EOF");
+		([^\\\"]|\\.)*	{
+			/* do your work like save in here */
+			printf("A simple string: %s\n", yytext);
+		}
+		\"			BEGIN(INITIAL);
+	}*/
+
+
+
+
 
 [0-9]+ {
 	printf("An integer: %s (%d)\n", yytext, atoi(yytext));
