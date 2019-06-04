@@ -1,3 +1,5 @@
+"string in 'double' quotes"
+
 alpha	equ	1
 
 123

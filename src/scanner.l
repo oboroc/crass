@@ -24,7 +24,7 @@ TODO: use https://westes.github.io/flex/manual/Common-Patterns.html for basic pa
 %option outfile="scanner.flex.c" header-file="scanner.flex.h"
 %option prefix="crass"
 
-%x incl str
+%x incl
 
 %%
 
@@ -50,27 +50,13 @@ include			BEGIN(incl);
 		yyterminate();
 }
 
-	/* https://westes.github.io/flex/manual/Start-Conditions.html#Start-Conditions */
-\"				BEGIN(str);
-
-	/*<str>.*\" {
-		BEGIN(INITIAL);
-		printf("A simple string: %s\n", yytext);
-	}/
-
-	/*<str> {
-		\n			yyerror("the string misses \" to termiate before newline");
-		<<EOF>>		yyerror("the string misses \" to terminate before EOF");
-		([^\\\"]|\\.)*	{
-			/* do your work like save in here */
-			printf("A simple string: %s\n", yytext);
-		}
-		\"			BEGIN(INITIAL);
-	}*/
-
-
-
-
+	/* super simple string matcher */
+	/* a much more complex C-style matcher example is here:
+	https://westes.github.io/flex/manual/Start-Conditions.html#Start-Conditions */
+\"[^\"]*\" {
+	yytext[strlen(yytext) - 1] = 0;			/* remove trailing " */
+	printf("A sting: %s\n", yytext + 1);	/* skip over starting " */
+}
 
 [0-9]+ {
 	printf("An integer: %s (%d)\n", yytext, atoi(yytext));

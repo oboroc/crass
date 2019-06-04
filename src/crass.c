@@ -45,7 +45,7 @@ int main(int argc, char** argv)
 		fprintf(stderr, "ERROR: please provide an input file to process\n");
 		exit(1);
 	}
-	scan_str("0abch A 1 0.1 equ \"abc\" ahaha");
+//	scan_str("0abch A 1 0.1 equ \"abc\" ahaha");
 	for (int i = 1; i < argc; i++)
 	{
 		printf("Argument #%d = %s\n", i, argv[i]);
