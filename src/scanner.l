@@ -91,7 +91,7 @@ include			BEGIN(incl);
 
 	/* eliminate backing up for the hexadecimal rule above */
 [0-9][0-9a-f]* {
-	fprintf(stderr, "Invalid token: %s\n", yytext);
+	fprintf(stderr, "ERROR: invalid token: %s\n", yytext);
 }
 
 	/* rule for simple float */
@@ -101,12 +101,12 @@ include			BEGIN(incl);
 
 	/* eliminate backing up by capturing '1.' */
 [0-9]+"." {
-	fprintf(stderr, "Invalid token: %s\n", yytext);
+	fprintf(stderr, "ERROR: invalid token: %s\n", yytext);
 }
 
 	/* eliminate backing up by capturing '.1' */
 "."[0-9]+ {
-	fprintf(stderr, "Invalid token: %s\n", yytext);
+	fprintf(stderr, "ERROR: invalid token: %s\n", yytext);
 }
 
 "+"	|
@@ -215,7 +215,7 @@ in {
 
 <*>.|\n {
 	/* default action, should always be the last */
-	fprintf(stderr, "Flex default rule fall-through: \"%s\" - please create new rules to capture this input\n", yytext);
+	fprintf(stderr, "ERROR: Flex default rule fall-through: \"%s\" - please create new rules to capture this input\n", yytext);
 }
 
 %%
