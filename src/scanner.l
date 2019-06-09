@@ -50,8 +50,7 @@ include			BEGIN(incl);
 		yyterminate();
 }
 
-	/* super simple string matcher */
-	/* a much more complex C-style matcher example is here:
+	/* string matcher usign exclusive condition, inspired by:
 	https://westes.github.io/flex/manual/Start-Conditions.html#Start-Conditions */
 
 \"	BEGIN(str);
@@ -65,14 +64,14 @@ include			BEGIN(incl);
 }
 
 <str>[^\"]* {
-	printf("A sting: %s\n", yytext);
+	printf("A string: \"%s\"\n", yytext);
 }
 
 <str>\" {
 	BEGIN(INITIAL);
 }
 
-<EOF>. {
+<str>. {
 	fprintf(stderr, "ERROR: fall through in <str> condition: %s\n", yytext);
 }
 
