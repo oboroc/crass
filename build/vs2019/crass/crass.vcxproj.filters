@@ -18,17 +18,15 @@
     <ClCompile Include="..\..\..\src\crass.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\scanner.flex.c">
+    <ClCompile Include="scanner.flex.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\src\scanner.l">
-      <Filter>Source Files</Filter>
-    </None>
+    <CustomBuild Include="..\..\..\src\scanner.l" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\src\scanner.flex.h">
+    <ClInclude Include="scanner.flex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
