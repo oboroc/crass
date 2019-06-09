@@ -23,11 +23,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="..\..\..\src\scanner.l" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="scanner.flex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\src\scanner.l">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\examples\test.txt" />
   </ItemGroup>
 </Project>
