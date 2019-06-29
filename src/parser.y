@@ -1,30 +1,45 @@
+/* Infix notation calculator. */
 
-%token TYPE DOTDOT ID
+%{
+  #include <math.h>
+  #include <stdio.h>
+  int yylex (void);
+  void yyerror (char const *);
+%}
 
-%left '+' '-'
+
+/* Bison declarations. */
+%define api.value.type {double}
+%token NUM
+%left '-' '+'
 %left '*' '/'
+%precedence NEG   /* negation--unary minus */
+%right '^'        /* exponentiation */
 
+
+%% /* The grammar follows. */
+
+input:
+  %empty
+| input line
+;
+
+
+line:
+  '\n'
+| exp '\n'  { printf ("\t%.10g\n", $1); }
+;
+
+
+exp:
+  NUM
+| exp '+' exp        { $$ = $1 + $3;      }
+| exp '-' exp        { $$ = $1 - $3;      }
+| exp '*' exp        { $$ = $1 * $3;      }
+| exp '/' exp        { $$ = $1 / $3;      }
+| '-' exp  %prec NEG { $$ = -$2;          }
+| exp '^' exp        { $$ = pow ($1, $3); }
+| '(' exp ')'        { $$ = $2;           }
+;
 
 %%
-type_decl: TYPE ID '=' type ';' ;
-
-type:
-  '(' id_list ')'
-| expr DOTDOT expr
-;
-
-
-id_list:
-  ID
-| id_list ',' ID
-;
-
-
-expr:
-  '(' expr ')'
-| expr '+' expr
-| expr '-' expr
-| expr '*' expr
-| expr '/' expr
-| ID
-;
