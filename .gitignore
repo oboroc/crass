@@ -6,3 +6,4 @@ Release/
 # custom
 *.flex.*
 lex.backup
+*.tab.c

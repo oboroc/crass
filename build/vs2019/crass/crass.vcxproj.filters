@@ -21,6 +21,9 @@
     <ClCompile Include="scanner.flex.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="parser.tab.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="scanner.flex.h">
@@ -34,5 +37,10 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\..\examples\test.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\src\parser.y">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
