@@ -34,3 +34,7 @@ Another attempt at a Z80 assembler.
 * [Z80 info](http://z80.info/)
 * [Z80 opcode tables #1](http://clrhome.org/table/)
 * [Z80 opcode tables #2](http://z80-heaven.wikidot.com/opcode-reference-chart)
+
+## File formats
+
+* [Microsoft M80 rel format](https://seasip.info/Cpm/rel.html)
