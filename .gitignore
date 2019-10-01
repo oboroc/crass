@@ -7,3 +7,6 @@ Release/
 *.flex.*
 lex.backup
 *.tab.c
+
+#cppcheck
+crass-cppcheck-build-dir
