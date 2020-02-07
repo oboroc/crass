@@ -3,13 +3,16 @@
 %{
 	#include <math.h>
 	#include <stdio.h>
-	int yylex(void);
-	void yyerror(char const *);
+	#include "scanner.flex.h"
+	//int yylex(void);
+	//void yyerror(char const *);
 %}
 
 
 /* Bison declarations. */
+%define parse.error verbose
 %define api.value.type {double}
+//%define api.prefix {crass}
 %token NUM
 %left '-' '+'
 %left '*' '/'
