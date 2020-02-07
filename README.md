@@ -19,7 +19,7 @@ Another attempt at a Z80 assembler.
 
 ## Flex / bison links
 
-* [great explanation of generating reentant parsers with flex/bison](https://stackoverflow.com/questions/48850242/thread-safe-reentrant-bison-flex),
+* great explanation of [generating reentant parsers with flex/bison](https://stackoverflow.com/questions/48850242/thread-safe-reentrant-bison-flex),
 [local copy](doc/thread-safe-reentrant-bison-flex.md)
 * [a sample CMakeLists.txt](https://boringssl.googlesource.com/boringssl/+/version_for_cocoapods_2.0/CMakeLists.txt)
 * LUV [lex](https://luv.asn.au/overheads/lex_yacc/lex.html) and [yacc](https://luv.asn.au/overheads/lex_yacc/yacc.html) tutorial

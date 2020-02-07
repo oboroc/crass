@@ -1,5 +1,5 @@
 Original is [here](https://stackoverflow.com/questions/48850242/thread-safe-reentrant-bison-flex),
-all copyrightS belongs to [rici](https://stackoverflow.com/users/1566221/rici)
+all copyrights belongs to [rici](https://stackoverflow.com/users/1566221/rici)
 
 # 1. Sample code
 
