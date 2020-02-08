@@ -10,42 +10,36 @@
 
 #define UNUSED(x) (void)(x)
 
-int crasswrap(yyscan_t yyscanner)
-{
-	UNUSED(yyscanner);
-	return 1;
-}
-
 void scan_str(char *str)
 {
 	/* use reentrant scanner */
 	yyscan_t scanner;
 	YY_BUFFER_STATE buf;
-	//crasslex_init(&scanner);
-	yylex_init(&scanner);
-//	buf = crass_scan_string(str, scanner);
-	buf = yy_scan_string(str, scanner);
-	//crasslex(scanner);
-	yylex(scanner);
+	crasslex_init(&scanner);
+//	yylex_init(&scanner);
+	buf = crass_scan_string(str, scanner);
+//	buf = yy_scan_string(str, scanner);
+	crasslex(scanner);
+//	yylex(scanner);
 
-	//crass_delete_buffer(buf, scanner);
-	yy_delete_buffer(buf, scanner);
-	//crasslex_destroy(scanner);
-	yylex_destroy(scanner);
+	crass_delete_buffer(buf, scanner);
+//	yy_delete_buffer(buf, scanner);
+	crasslex_destroy(scanner);
+//	yylex_destroy(scanner);
 }
 
 void scan_file(FILE* f)
 {
 	/* use reentrant scanner */
 	yyscan_t scanner;
-	//crasslex_init(&scanner);
-	yylex_init(&scanner);
-	//crassset_in(f, scanner);
-	yyset_in(f, scanner);
-	//crasslex(scanner);
-	yylex(scanner);
-	//crasslex_destroy(scanner);
-	yylex_destroy(scanner);
+	crasslex_init(&scanner);
+//	yylex_init(&scanner);
+	crassset_in(f, scanner);
+//	yyset_in(f, scanner);
+	crasslex(scanner);
+//	yylex(scanner);
+	crasslex_destroy(scanner);
+//	yylex_destroy(scanner);
 }
 
 int main(int argc, char** argv)

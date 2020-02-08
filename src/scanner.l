@@ -23,7 +23,7 @@ TODO: use https://westes.github.io/flex/manual/Common-Patterns.html for basic pa
 %option warn backup verbose
 %option nodefault
 %option outfile="scanner.flex.c" header-file="scanner.flex.h"
-    /* %option prefix="crass" */
+%option prefix="crass"
 
 %x incl str
 

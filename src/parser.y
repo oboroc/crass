@@ -13,7 +13,7 @@
 %define api.pure full
 //%define parse.error verbose
 %define api.value.type {double}
-//%define api.prefix {crass}
+%define api.prefix {crass}
 
 %token NUM
 %left '-' '+'
