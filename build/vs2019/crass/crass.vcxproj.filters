@@ -34,13 +34,11 @@
     <CustomBuild Include="..\..\..\src\scanner.l">
       <Filter>Source Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="..\..\..\src\parser.y">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\..\examples\test.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\src\parser.y">
-      <Filter>Source Files</Filter>
-    </None>
   </ItemGroup>
 </Project>
