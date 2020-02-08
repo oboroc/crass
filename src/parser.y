@@ -5,14 +5,16 @@
 	#include <stdio.h>
 	#include "scanner.flex.h"
 	//int yylex(void);
-	//void yyerror(char const *);
+	void yyerror(char const *);
 %}
 
 
 /* Bison declarations. */
-%define parse.error verbose
+%define api.pure full
+//%define parse.error verbose
 %define api.value.type {double}
 //%define api.prefix {crass}
+
 %token NUM
 %left '-' '+'
 %left '*' '/'
@@ -46,3 +48,11 @@ exp:
 ;
 
 %%
+
+
+
+void yyerror(char const *s)
+{
+	fprintf (stderr, "%s\n", s);
+}
+

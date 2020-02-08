@@ -17,6 +17,7 @@ TODO: use https://westes.github.io/flex/manual/Common-Patterns.html for basic pa
 %{
 %}
 
+%option noyywrap
 %option caseless reentrant yylineno
 %option batch align 8bit fast read
 %option warn backup verbose
