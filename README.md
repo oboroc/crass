@@ -21,6 +21,7 @@ Another attempt at a Z80 assembler.
 
 * great explanation of [generating reentant parsers with flex/bison](https://stackoverflow.com/questions/48850242/thread-safe-reentrant-bison-flex),
 [local copy](doc/thread-safe-reentrant-bison-flex.md)
+* another example of reentrant flex/bison parser: [1](https://stanislaw.github.io/2016/03/29/reentrant-parser-using-flex-and-bison.html), [2](https://github.com/stanislaw/Examples/tree/20160328-reentrant-parser-with-flex-and-bison/Parser/Source)
 * [a sample CMakeLists.txt](https://boringssl.googlesource.com/boringssl/+/version_for_cocoapods_2.0/CMakeLists.txt)
 * LUV [lex](https://luv.asn.au/overheads/lex_yacc/lex.html) and [yacc](https://luv.asn.au/overheads/lex_yacc/yacc.html) tutorial
 * [Parsing arithmetic expressions - Bison and Flex](http://www-h.eng.cam.ac.uk/help/tpl/languages/flexbison/)
