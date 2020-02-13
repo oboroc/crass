@@ -19,6 +19,7 @@ Another attempt at a Z80 assembler.
 
 ## Flex / bison links
 
+* [Writing Your Own Toy Compiler Using Flex, Bison and LLVM](https://gnuu.org/2009/09/18/writing-your-own-toy-compiler/)
 * great explanation of [generating reentant parsers with flex/bison](https://stackoverflow.com/questions/48850242/thread-safe-reentrant-bison-flex),
 [local copy](doc/thread-safe-reentrant-bison-flex.md)
 * another example of reentrant flex/bison parser: [1](https://stanislaw.github.io/2016/03/29/reentrant-parser-using-flex-and-bison.html), [2](https://github.com/stanislaw/Examples/tree/20160328-reentrant-parser-with-flex-and-bison/Parser/Source)
