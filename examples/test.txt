@@ -1,7 +1,7 @@
+100 + 2
+
 "string in 'double' quotes"
-
 alpha	equ	1
-
 123
 0abch
 ahaha
@@ -13,5 +13,4 @@ ahaha
 101010b
 rld
 daa
-
 end

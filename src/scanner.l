@@ -12,13 +12,17 @@ TODO: use https://westes.github.io/flex/manual/Common-Patterns.html for basic pa
 #include <inttypes.h>
 #include <math.h>
 #include <assert.h>
+
+#include "parser.tab.h"
 }
 
 %{
 %}
 
 %option noyywrap
-%option caseless reentrant yylineno
+%option caseless
+%option reentrant
+%option yylineno
 %option batch align 8bit fast read
 %option warn backup verbose
 %option nodefault
@@ -65,7 +69,7 @@ include			BEGIN(incl);
 }
 
 <str>[^\"]* {
-	printf("A string: \"%s\"\n", yytext);
+	printf("[lex] A string: \"%s\"\n", yytext);
 }
 
 <str>\" {
@@ -77,17 +81,17 @@ include			BEGIN(incl);
 }
 
 [0-9]+ {
-	printf("An integer: %s (%d)\n", yytext, atoi(yytext));
+	printf("[lex] An integer: %s (%d)\n", yytext, atoi(yytext));
 }
 
 	/* rule for binary numbers */
 [0-1]+b {
-	printf("A binary number: %s (%d)\n", yytext, strtol(yytext, NULL, 2));
+	printf("[lex] A binary number: %s (%d)\n", yytext, strtol(yytext, NULL, 2));
 }
 
 	/* https://westes.github.io/flex/manual/Performance.html#index-error-rules_002c-to-eliminate-backing-up */
 [0-9][0-9a-f]*h {
-	printf("A hexadecimal: %s (%x)\n", yytext, strtol(yytext, NULL, 16));
+	printf("[lex] A hexadecimal: %s (%x)\n", yytext, strtol(yytext, NULL, 16));
 }
 
 	/* eliminate backing up for the hexadecimal rule above */
@@ -97,7 +101,7 @@ include			BEGIN(incl);
 
 	/* rule for simple float */
 [0-9]+"."[0-9]+ {
-	printf("A float: %s (%g)\n", yytext, atof(yytext));
+	printf("[lex] A float: %s (%g)\n", yytext, atof(yytext));
 }
 
 	/* eliminate backing up by capturing '1.' */
@@ -114,14 +118,14 @@ include			BEGIN(incl);
 "-"	|
 "*"	|
 "/" {
-	printf("An operator: %s\n", yytext);
+	printf("[lex] An operator: %s\n", yytext);
 }
 
 	/* reserved words */
 end		|
 equ		|
 org {
-	printf("A keyword: %s\n", yytext);
+	printf("[lex] A keyword: %s\n", yytext);
 }
 
 	/* opcodes */
@@ -172,7 +176,7 @@ sla		|	/* shift */
 sra		|
 srl		|
 
-nop		|	/* general */
+blahnop		|	/* general */
 halt	|
 di		|
 ei		|
@@ -203,11 +207,13 @@ inir	|
 ind		|
 ini		|
 in {
-	printf("An opcode: %s\n", yytext);
+	printf("[lex] An opcode: %s\n", yytext);
 }
 
+nop	return NOP;
+
 [a-z_][a-z0-9_]* {
-	printf("An identifier: %s\n", yytext);
+	printf("[lex] An identifier: %s\n", yytext);
 }
 
 [ \t\n]+	/* eat up whitespace */

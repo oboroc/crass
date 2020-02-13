@@ -11,6 +11,7 @@ lex.backup
 ~*
 *.rom
 *.sym
+*.z80
 
 #cppcheck
 crass-cppcheck-build-dir
