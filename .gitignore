@@ -6,7 +6,11 @@ Release/
 # custom
 *.flex.*
 lex.backup
-*.tab.c
+*.tab.[h|c]
+*.exe
+~*
+*.rom
+*.sym
 
 #cppcheck
 crass-cppcheck-build-dir
