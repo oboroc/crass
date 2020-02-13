@@ -160,6 +160,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="parser.tab.h" />
     <ClInclude Include="scanner.flex.h" />
   </ItemGroup>
   <ItemGroup>
@@ -168,18 +169,18 @@
   <ItemGroup>
     <CustomBuild Include="..\..\..\src\parser.y">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">win_bison.exe $(ProjectDir)..\..\..\src\parser.y</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">win_bison.exe -d $(ProjectDir)..\..\..\src\parser.y</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Performing win_bison.exe on parser.y</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">win_bison.exe $(ProjectDir)..\..\..\src\parser.y</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">win_bison.exe -d $(ProjectDir)..\..\..\src\parser.y</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Performing win_bison.exe on parser.y</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">win_bison.exe $(ProjectDir)..\..\..\src\parser.y</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">win_bison.exe -d $(ProjectDir)..\..\..\src\parser.y</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing win_bison.exe on parser.y</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">win_bison.exe $(ProjectDir)..\..\..\src\parser.y</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">win_bison.exe -d $(ProjectDir)..\..\..\src\parser.y</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing win_bison.exe on parser.y</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">parser.tab.c</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">parser.tab.c</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">parser.tab.c</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">parser.tab.c</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">parser.tab.c;parser.tab.h</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">parser.tab.c;parser.tab.h</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">parser.tab.c;parser.tab.h</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">parser.tab.c;parser.tab.h</Outputs>
     </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

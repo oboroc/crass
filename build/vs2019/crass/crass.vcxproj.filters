@@ -29,6 +29,9 @@
     <ClInclude Include="scanner.flex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="parser.tab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\..\src\scanner.l">
