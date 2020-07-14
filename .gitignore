@@ -3,6 +3,9 @@
 Debug/
 Release/
 
+#cppcheck
+crass-cppcheck-build-dir
+
 # custom
 *.flex.*
 lex.backup
@@ -12,6 +15,4 @@ lex.backup
 *.rom
 *.sym
 *.z80
-
-#cppcheck
-crass-cppcheck-build-dir
+examples/**/*.txt
