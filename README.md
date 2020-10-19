@@ -16,6 +16,7 @@ Another attempt at a Z80 assembler.
 * use linter to enforce uniform code formatting
 * avoid tabs, use Python style 2 space indent
 * reference [How to C in 2016](https://matt.sh/howto-c) for good ideas
+* use latest [winflexbison](https://github.com/lexxmark/winflexbison/releases)
 
 ## Flex / bison links
 
