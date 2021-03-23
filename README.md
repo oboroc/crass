@@ -43,3 +43,4 @@ Another attempt at a Z80 assembler.
 ## File formats
 
 * [Microsoft M80 rel format](https://seasip.info/Cpm/rel.html)
+* [MASM 6.x BNF syntax](https://docs.microsoft.com/en-us/cpp/assembler/masm/masm-bnf-grammar?view=msvc-160)
