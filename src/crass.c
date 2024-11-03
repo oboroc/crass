@@ -29,7 +29,8 @@ void scan_file(FILE* f)
 	yyscan_t scanner;
 	crasslex_init(&scanner);
 	crassset_in(f, scanner);
-	crassparse(scanner);	//crasslex(scanner);
+	//crassparse(scanner);	//crasslex(scanner);
+	crassparse();
 	crasslex_destroy(scanner);
 }
 
